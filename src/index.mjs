@@ -1,5 +1,6 @@
 import express from "express";
 const app = express();
+app.use(express.json()) // middleware
 const port = 3000;
 
 const mockUsers = [
@@ -34,6 +35,11 @@ app.get("/api/users", (request, response) => {
 
     return response.send(filteredUsers);
 });
+
+app.post("/api/users", (request, response) => {
+    console.log(request.body);
+    return response.send(200);
+})
 
 // Products endpoint
 app.get("/api/products", (request, response) => {
